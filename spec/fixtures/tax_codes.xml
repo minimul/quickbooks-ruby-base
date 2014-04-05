@@ -1,0 +1,58 @@
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2014-04-04T04:50:02.406-07:00">
+  <QueryResponse startPosition="1" maxResults="4" totalCount="4">
+    <TaxCode>
+      <Id>TAX</Id>
+      <MetaData>
+        <CreateTime>2013-08-26T12:24:57-07:00</CreateTime>
+        <LastUpdatedTime>2013-08-26T12:24:57-07:00</LastUpdatedTime>
+      </MetaData>
+      <Name>TAX</Name>
+      <Description>TAX</Description>
+      <Taxable>true</Taxable>
+      <TaxGroup>false</TaxGroup>
+    </TaxCode>
+    <TaxCode>
+      <Id>NON</Id>
+      <MetaData>
+        <CreateTime>2013-08-26T12:24:57-07:00</CreateTime>
+        <LastUpdatedTime>2013-08-26T12:24:57-07:00</LastUpdatedTime>
+      </MetaData>
+      <Name>NON</Name>
+      <Description>NON</Description>
+      <Taxable>false</Taxable>
+      <TaxGroup>false</TaxGroup>
+    </TaxCode>
+    <TaxCode>
+      <Id>CustomSalesTax</Id>
+      <MetaData>
+        <CreateTime>2013-08-26T12:24:57-07:00</CreateTime>
+        <LastUpdatedTime>2013-08-26T12:24:57-07:00</LastUpdatedTime>
+      </MetaData>
+      <Name>CustomSalesTax</Name>
+      <Description>CustomSalesTax</Description>
+      <Taxable>true</Taxable>
+      <TaxGroup>true</TaxGroup>
+    </TaxCode>
+    <TaxCode domain="QBO" sparse="false">
+      <Id>2</Id>
+      <SyncToken>0</SyncToken>
+      <MetaData>
+        <CreateTime>2014-03-28T13:52:48-07:00</CreateTime>
+        <LastUpdatedTime>2014-03-28T13:52:48-07:00</LastUpdatedTime>
+      </MetaData>
+      <Name>New York City</Name>
+      <Description>New York City</Description>
+      <Active>true</Active>
+      <Taxable>true</Taxable>
+      <TaxGroup>true</TaxGroup>
+      <SalesTaxRateList>
+        <TaxRateDetail>
+          <TaxRateRef name="New York City">1</TaxRateRef>
+          <TaxTypeApplicable>TaxOnAmount</TaxTypeApplicable>
+          <TaxOrder>0</TaxOrder>
+        </TaxRateDetail>
+      </SalesTaxRateList>
+      <PurchaseTaxRateList/>
+    </TaxCode>
+  </QueryResponse>
+</IntuitResponse>

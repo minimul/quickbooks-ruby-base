@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2014-04-04T04:52:19.963-07:00">
+  <QueryResponse startPosition="1" maxResults="20" totalCount="20">
+    <Invoice domain="QBO" sparse="false">
+      <Id>29</Id>
+      <SyncToken>0</SyncToken>
+      <MetaData>
+        <CreateTime>2014-04-01T08:19:48-07:00</CreateTime>
+        <LastUpdatedTime>2014-04-01T08:19:48-07:00</LastUpdatedTime>
+      </MetaData>
+      <DocNumber>1234</DocNumber>
+      <TxnDate>2014-04-01</TxnDate>
+      <Line>
+        <Id>1</Id>
+        <LineNum>1</LineNum>
+        <Description>Some big thingy</Description>
+        <Amount>64.99</Amount>
+        <DetailType>SalesItemLineDetail</DetailType>
+        <SalesItemLineDetail>
+          <ItemRef name="Services">1</ItemRef>
+          <UnitPrice>64.99</UnitPrice>
+          <Qty>1</Qty>
+          <TaxCodeRef>TAX</TaxCodeRef>
+        </SalesItemLineDetail>
+      </Line>
+      <Line>
+        <Id>2</Id>
+        <LineNum>2</LineNum>
+        <Description>Some big thingy</Description>
+        <Amount>64.99</Amount>
+        <DetailType>SalesItemLineDetail</DetailType>
+        <SalesItemLineDetail>
+          <ItemRef name="Services">1</ItemRef>
+          <UnitPrice>64.99</UnitPrice>
+          <Qty>1</Qty>
+          <TaxCodeRef>TAX</TaxCodeRef>
+        </SalesItemLineDetail>
+      </Line>
+      <Line>
+        <Amount>129.98</Amount>
+        <DetailType>SubTotalLineDetail</DetailType>
+        <SubTotalLineDetail/>
+      </Line>
+      <TxnTaxDetail>
+        <TxnTaxCodeRef>2</TxnTaxCodeRef>
+        <TotalTax>0</TotalTax>
+        <TaxLine>
+          <Amount>0</Amount>
+          <DetailType>TaxLineDetail</DetailType>
+          <TaxLineDetail>
+            <TaxRateRef>1</TaxRateRef>
+            <PercentBased>true</PercentBased>
+            <TaxPercent>10</TaxPercent>
+            <NetAmountTaxable>129.98</NetAmountTaxable>
+          </TaxLineDetail>
+        </TaxLine>
+      </TxnTaxDetail>
+      <CustomerRef name="(empty)">6</CustomerRef>
+      <BillAddr>
+        <Id>3</Id>
+        <Line1>123 darkwing road</Line1>
+        <Line2>RT 101</Line2>
+        <City>Rockingham</City>
+        <CountrySubDivisionCode>NH</CountrySubDivisionCode>
+        <PostalCode>10002</PostalCode>
+        <Lat>40.7135097</Lat>
+        <Long>-73.9859414</Long>
+      </BillAddr>
+      <DueDate>2014-04-01</DueDate>
+      <TotalAmt>129.98</TotalAmt>
+      <ApplyTaxAfterDiscount>false</ApplyTaxAfterDiscount>
+      <PrintStatus>NeedToPrint</PrintStatus>
+      <EmailStatus>NotSet</EmailStatus>
+      <BillEmail>
+        <Address>john@doe.com</Address>
+      </BillEmail>
+      <Balance>129.98</Balance>
+      <Deposit>0</Deposit>
+      <AllowIPNPayment>false</AllowIPNPayment>
+      <AllowOnlinePayment>false</AllowOnlinePayment>
+      <AllowOnlineCreditCardPayment>false</AllowOnlineCreditCardPayment>
+      <AllowOnlineACHPayment>false</AllowOnlineACHPayment>
+    </Invoice>
+    <Invoice domain="QBO" sparse="false">
+      <Id>28</Id>
+      <SyncToken>0</SyncToken>
+      <MetaData>
+        <CreateTime>2014-04-01T07:04:10-07:00</CreateTime>
+        <LastUpdatedTime>2014-04-01T07:04:10-07:00</LastUpdatedTime>
+      </MetaData>
+      <DocNumber>1234</DocNumber>
+      <TxnDate>2014-04-01</TxnDate>
+      <Line>
+        <Id>1</Id>
+        <LineNum>1</LineNum>
+        <Description>Some big thingy</Description>
+        <Amount>64.99</Amount>
+        <DetailType>SalesItemLineDetail</DetailType>
+        <SalesItemLineDetail>
+          <ItemRef name="Services">1</ItemRef>
+          <UnitPrice>64.99</UnitPrice>
+          <Qty>1</Qty>
+          <TaxCodeRef>TAX</TaxCodeRef>
+        </SalesItemLineDetail>
+      </Line>
+      <Line>
+        <Amount>64.99</Amount>
+        <DetailType>SubTotalLineDetail</DetailType>
+        <SubTotalLineDetail/>
+      </Line>
+      <TxnTaxDetail>
+        <TxnTaxCodeRef>2</TxnTaxCodeRef>
+        <TotalTax>0</TotalTax>
+        <TaxLine>
+          <Amount>0</Amount>
+          <DetailType>TaxLineDetail</DetailType>
+          <TaxLineDetail>
+            <TaxRateRef>1</TaxRateRef>
+            <PercentBased>true</PercentBased>
+            <TaxPercent>10</TaxPercent>
+            <NetAmountTaxable>64.99</NetAmountTaxable>
+          </TaxLineDetail>
+        </TaxLine>
+      </TxnTaxDetail>
+      <CustomerRef name="(empty)">6</CustomerRef>
+      <BillAddr>
+        <Id>3</Id>
+        <Line1>123 darkwing road</Line1>
+        <Line2>RT 101</Line2>
+        <City>Rockingham</City>
+        <CountrySubDivisionCode>NH</CountrySubDivisionCode>
+        <PostalCode>10002</PostalCode>
+        <Lat>40.7135097</Lat>
+        <Long>-73.9859414</Long>
+      </BillAddr>
+      <DueDate>2014-04-01</DueDate>
+      <TotalAmt>64.99</TotalAmt>
+      <ApplyTaxAfterDiscount>false</ApplyTaxAfterDiscount>
+      <PrintStatus>NeedToPrint</PrintStatus>
+      <EmailStatus>NotSet</EmailStatus>
+      <BillEmail>
+        <Address>john@doe.com</Address>
+      </BillEmail>
+      <Balance>64.99</Balance>
+      <Deposit>0</Deposit>
+      <AllowIPNPayment>false</AllowIPNPayment>
+      <AllowOnlinePayment>false</AllowOnlinePayment>
+      <AllowOnlineCreditCardPayment>false</AllowOnlineCreditCardPayment>
+      <AllowOnlineACHPayment>false</AllowOnlineACHPayment>
+    </Invoice>
+  </QueryResponse>
+</IntuitResponse>

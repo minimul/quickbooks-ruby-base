@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2014-04-04T06:31:21.480-07:00">
+  <QueryResponse startPosition="1" maxResults="6">
+    <Vendor domain="QBO" sparse="false">
+      <Id>11</Id>
+      <SyncToken>1</SyncToken>
+      <MetaData>
+        <CreateTime>2014-02-04T14:27:38-08:00</CreateTime>
+        <LastUpdatedTime>2014-02-04T14:39:34-08:00</LastUpdatedTime>
+      </MetaData>
+      <GivenName>Bill</GivenName>
+      <FamilyName>Sales</FamilyName>
+      <CompanyName>Catherines Cupcakes</CompanyName>
+      <DisplayName>Catherines Cupcakes</DisplayName>
+      <PrintOnCheckName>Catherines Cupcakes</PrintOnCheckName>
+      <Active>true</Active>
+      <PrimaryPhone>
+        <FreeFormNumber>603-344-5555</FreeFormNumber>
+      </PrimaryPhone>
+      <PrimaryEmailAddr>
+        <Address>cathy@donkey.io</Address>
+      </PrimaryEmailAddr>
+      <BillAddr>
+        <Id>7</Id>
+        <Line1>44 Billings Circle</Line1>
+        <City>Keene</City>
+        <CountrySubDivisionCode>NH</CountrySubDivisionCode>
+        <PostalCode>03455</PostalCode>
+        <Lat>42.9453196</Lat>
+        <Long>-72.31237449999999</Long>
+      </BillAddr>
+      <Balance>0</Balance>
+      <Vendor1099>false</Vendor1099>
+    </Vendor>
+    <Vendor domain="QBO" sparse="false">
+      <Id>3</Id>
+      <SyncToken>2</SyncToken>
+      <MetaData>
+        <CreateTime>2013-12-16T07:07:30-08:00</CreateTime>
+        <LastUpdatedTime>2013-12-16T07:15:32-08:00</LastUpdatedTime>
+      </MetaData>
+      <GivenName>Christian</GivenName>
+      <DisplayName>Christian</DisplayName>
+      <PrintOnCheckName>Christian</PrintOnCheckName>
+      <Active>true</Active>
+      <PrimaryEmailAddr>
+        <Address>christian@minimul.io</Address>
+      </PrimaryEmailAddr>
+      <Balance>0</Balance>
+      <Vendor1099>false</Vendor1099>
+    </Vendor>
+    <Vendor domain="QBO" sparse="false">
+      <Id>1</Id>
+      <SyncToken>0</SyncToken>
+      <MetaData>
+        <CreateTime>2013-10-29T02:59:05-07:00</CreateTime>
+        <LastUpdatedTime>2013-10-29T02:59:05-07:00</LastUpdatedTime>
+      </MetaData>
+      <DisplayName>John Doe</DisplayName>
+      <PrintOnCheckName>John Doe</PrintOnCheckName>
+      <Active>true</Active>
+      <Balance>0</Balance>
+      <Vendor1099>false</Vendor1099>
+    </Vendor>
+    <Vendor domain="QBO" sparse="false">
+      <Id>2</Id>
+      <SyncToken>1</SyncToken>
+      <MetaData>
+        <CreateTime>2013-11-02T05:17:06-07:00</CreateTime>
+        <LastUpdatedTime>2013-11-02T07:16:45-07:00</LastUpdatedTime>
+      </MetaData>
+      <DisplayName>Minimul</DisplayName>
+      <PrintOnCheckName>Minimul</PrintOnCheckName>
+      <Active>true</Active>
+      <PrimaryEmailAddr>
+        <Address>christian@minimul.io</Address>
+      </PrimaryEmailAddr>
+      <Balance>0</Balance>
+      <Vendor1099>false</Vendor1099>
+    </Vendor>
+    <Vendor domain="QBO" sparse="false">
+      <Id>13</Id>
+      <SyncToken>0</SyncToken>
+      <MetaData>
+        <CreateTime>2014-04-01T06:17:50-07:00</CreateTime>
+        <LastUpdatedTime>2014-04-01T06:17:50-07:00</LastUpdatedTime>
+      </MetaData>
+      <DisplayName>Musty Musketts</DisplayName>
+      <PrintOnCheckName>Musty Musketts</PrintOnCheckName>
+      <Active>true</Active>
+      <Balance>0</Balance>
+      <Vendor1099>false</Vendor1099>
+    </Vendor>
+  </QueryResponse>
+</IntuitResponse>
