@@ -32,16 +32,20 @@ module Quickbooks
 
     def show(options = {})
       options = { per_page: 20, page: 1 }.merge(options)
-      method = describing_method
       @service.query(nil, options).entries.collect do |e|
-        desc = (method = describing_method) =~ /(total)/ ? e.send(method).to_f : e.send(method)
-        "QBID: #{e.id} DESC: #{desc}"
+        "QBID: #{e.id} DESC: #{description(e)}"
       end
+    end
+
+    def description(e)
+      desc = (method = describing_method) =~ /(total)/ ? e.send(method).to_f : e.send(method)
+    rescue => e
+      'nil'
     end
 
     def describing_method
       case @service.class.name
-      when /(Item|TaxCode|PaymentMethod)/
+      when /(Item|TaxCode|PaymentMethod|Account)/
         'name'
       when /(Invoice|CreditMemo)/
         'doc_number'

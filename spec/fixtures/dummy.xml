@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2014-04-04T04:52:19.963-07:00">
+  <QueryResponse startPosition="1" maxResults="20" totalCount="1">
+    <Dummy>
+      <Id>1</Id>
+    </Dummy>
+    <Dummy>
+      <Id>2</Id>
+    </Dummy>
+  </QueryResponse>
+</IntuitResponse>

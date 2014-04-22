@@ -61,6 +61,15 @@ describe Quickbooks::Base do
       expect(qr.show.last).to match /100\.0/
     end
 
+    it "description should display 'nil' as no description fits" do
+      xml = File.read(File.join('spec', 'fixtures', 'dummy.xml'))
+      xml.gsub!('Dummy', 'SalesReceipt')
+      response = Struct.new(:plain_body, :code).new(xml, 200)
+      allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
+      qr = Quickbooks::Base.new(account, :sales_receipt)
+      expect(qr.show.last).to match /nil/
+    end
+
   end
 
   describe ".retrieve" do
