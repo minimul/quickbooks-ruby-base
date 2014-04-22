@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2014-04-04T04:52:19.963-07:00">
+  <QueryResponse startPosition="1" maxResults="20" totalCount="20">
+    <Payment>
+      <Id>33</Id>
+      <SyncToken>0</SyncToken>
+      <MetaData>
+        <CreateTime>2014-04-15T10:21:16-0400</CreateTime>
+        <LastUpdatedTime>2014-04-15T10:21:16-0400</LastUpdatedTime>
+      </MetaData>
+      <TxnDate>2014-04-14</TxnDate>
+      <Line>
+        <Amount>100.0</Amount>
+        <LinkedTxn>
+          <TxnId>29</TxnId>
+          <TxnType>Invoice</TxnType>
+        </LinkedTxn>
+        <LinkedTxn>
+          <TxnId>29</TxnId>
+          <TxnType>Invoice</TxnType>
+        </LinkedTxn>
+      </Line>
+      <CustomerRef>6</CustomerRef>
+      <DepositToAccountRef>4</DepositToAccountRef>
+      <TotalAmt>100.0</TotalAmt>
+      <UnappliedAmt>0.0</UnappliedAmt>
+      <ProcessPayment>false</ProcessPayment>
+      <ExchangeRate>0.0</ExchangeRate>
+    </Payment>
+    <Payment>
+      <Id>32</Id>
+      <SyncToken>0</SyncToken>
+      <MetaData>
+        <CreateTime>2014-04-15T10:18:27-0400</CreateTime>
+        <LastUpdatedTime>2014-04-15T10:18:27-0400</LastUpdatedTime>
+      </MetaData>
+      <TxnDate>2014-04-14</TxnDate>
+      <CustomerRef>6</CustomerRef>
+      <DepositToAccountRef>4</DepositToAccountRef>
+      <TotalAmt>100.0</TotalAmt>
+      <UnappliedAmt>100.0</UnappliedAmt>
+      <ProcessPayment>false</ProcessPayment>
+      <ExchangeRate>0.0</ExchangeRate>
+    </Payment>
+  </QueryResponse>
+</IntuitResponse>

@@ -29,7 +29,7 @@ describe Quickbooks::Base do
   describe ".show" do
     let(:account) { account = double(settings: double( qb_token: 'tttttttttt', qb_secret: 'ssssssss', qb_company_id: '1234567')) }
 
-    it "should display using the name as the given name" do
+    it "description should display using the dispay_name for vendor" do
       xml = File.read(File.join('spec', 'fixtures', 'vendors.xml'))
       response = Struct.new(:plain_body, :code).new(xml, 200)
       allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
@@ -37,7 +37,7 @@ describe Quickbooks::Base do
       expect(qr.show.first).to match /Catherines Cupcakes/
     end
 
-    it "should display using the name and not doc_number" do
+    it "description should display using the name for tax_code" do
       xml = File.read(File.join('spec', 'fixtures', 'tax_codes.xml'))
       response = Struct.new(:plain_body, :code).new(xml, 200)
       allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
@@ -45,13 +45,22 @@ describe Quickbooks::Base do
       expect(qr.show.last).to match /New York City/
     end
 
-    it "should display using the doc_number and not name" do
+    it "description should display using the doc_number for invoice" do
       xml = File.read(File.join('spec', 'fixtures', 'invoices.xml'))
       response = Struct.new(:plain_body, :code).new(xml, 200)
       allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
       qr = Quickbooks::Base.new(account, :invoice)
       expect(qr.show.last).to match /1234/
     end
+
+    it "description should display using the total for payment" do
+      xml = File.read(File.join('spec', 'fixtures', 'payments.xml'))
+      response = Struct.new(:plain_body, :code).new(xml, 200)
+      allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
+      qr = Quickbooks::Base.new(account, :payment)
+      expect(qr.show.last).to match /100\.0/
+    end
+
   end
 
   describe ".retrieve" do
