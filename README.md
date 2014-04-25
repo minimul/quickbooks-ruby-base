@@ -1,6 +1,7 @@
-# Quickbooks::Base
+## Description
 
-A gem to complement the [`quickbooks-ruby`](https://github.com/ruckus/quickbooks-ruby) gem by providing a base class to handle routine tasks like creating a model, service, and displaying information.
+The `quickbooks-ruby-base` gem complements the [`quickbooks-ruby`](https://github.com/ruckus/quickbooks-ruby) library by providing a base class to handle routine tasks like creating a model, service, and displaying information.
+See the [screencast](http://minimul.com/improve-your-quickbooks-ruby-integration-experience-with-the-quickbooks-ruby-base-gem.html) for more details.
 
 ## Installation
 
