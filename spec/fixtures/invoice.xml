@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2015-02-10T05:19:42.667-08:00">
+  <Invoice domain="QBO" sparse="false">
+    <Id>156</Id>
+    <SyncToken>0</SyncToken>
+    <MetaData>
+      <CreateTime>2015-02-10T05:07:43-08:00</CreateTime>
+      <LastUpdatedTime>2015-02-10T05:07:43-08:00</LastUpdatedTime>
+    </MetaData>
+    <CustomField>
+      <DefinitionId>1</DefinitionId>
+      <Name>Crew #</Name>
+      <Type>StringType</Type>
+    </CustomField>
+    <DocNumber>1049</DocNumber>
+    <TxnDate>2015-02-10</TxnDate>
+    <Line>
+      <Id>1</Id>
+      <LineNum>1</LineNum>
+      <Description>Plush Baby Doll</Description>
+      <Amount>50.00</Amount>
+      <DetailType>SalesItemLineDetail</DetailType>
+      <SalesItemLineDetail>
+        <ItemRef name="Services">1</ItemRef>
+        <UnitPrice>50</UnitPrice>
+        <Qty>1</Qty>
+        <TaxCodeRef>NON</TaxCodeRef>
+      </SalesItemLineDetail>
+    </Line>
+    <Line>
+      <Amount>50.00</Amount>
+      <DetailType>SubTotalLineDetail</DetailType>
+      <SubTotalLineDetail/>
+    </Line>
+    <TxnTaxDetail>
+      <TotalTax>0</TotalTax>
+    </TxnTaxDetail>
+    <CustomerRef name="Bill's Windsurf Shop">2</CustomerRef>
+    <BillAddr>
+      <Id>3</Id>
+      <Line1>12 Ocean Dr.</Line1>
+      <City>Half Moon Bay</City>
+      <CountrySubDivisionCode>CA</CountrySubDivisionCode>
+      <PostalCode>94213</PostalCode>
+      <Lat>37.4307072</Lat>
+      <Long>-122.4295234</Long>
+    </BillAddr>
+    <ShipAddr>
+      <Id>3</Id>
+      <Line1>12 Ocean Dr.</Line1>
+      <City>Half Moon Bay</City>
+      <CountrySubDivisionCode>CA</CountrySubDivisionCode>
+      <PostalCode>94213</PostalCode>
+      <Lat>37.4307072</Lat>
+      <Long>-122.4295234</Long>
+    </ShipAddr>
+    <DueDate>2015-03-12</DueDate>
+    <TotalAmt>50.00</TotalAmt>
+    <ApplyTaxAfterDiscount>false</ApplyTaxAfterDiscount>
+    <PrintStatus>NeedToPrint</PrintStatus>
+    <EmailStatus>NotSet</EmailStatus>
+    <Balance>50.00</Balance>
+    <Deposit>0</Deposit>
+    <AllowIPNPayment>false</AllowIPNPayment>
+    <AllowOnlinePayment>false</AllowOnlinePayment>
+    <AllowOnlineCreditCardPayment>false</AllowOnlineCreditCardPayment>
+    <AllowOnlineACHPayment>false</AllowOnlineACHPayment>
+  </Invoice>
+</IntuitResponse>
