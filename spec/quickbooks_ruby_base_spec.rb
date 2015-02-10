@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Quickbooks::Base do
   let(:account) { double }
+  let(:full_account) { account = double(settings: double( qb_token: 'tttttttttt', qb_secret: 'ssssssss', qb_company_id: '1234567')) }
   let(:qr_base) { Quickbooks::Base.new(account) }
 
   describe ".quickbooks_ruby_namespace" do
@@ -27,46 +28,41 @@ describe Quickbooks::Base do
   end
 
   describe ".show" do
-    let(:account) { account = double(settings: double( qb_token: 'tttttttttt', qb_secret: 'ssssssss', qb_company_id: '1234567')) }
 
     it "description should display using the dispay_name for vendor" do
-      xml = File.read(File.join('spec', 'fixtures', 'vendors.xml'))
-      response = Struct.new(:plain_body, :code).new(xml, 200)
-      allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
-      qr = Quickbooks::Base.new(account, :vendor)
+      xml = read_fixture('vendors')
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :vendor)
       expect(qr.show.first).to match /Catherines Cupcakes/
     end
 
     it "description should display using the name for tax_code" do
-      xml = File.read(File.join('spec', 'fixtures', 'tax_codes.xml'))
-      response = Struct.new(:plain_body, :code).new(xml, 200)
-      allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
-      qr = Quickbooks::Base.new(account, :tax_code)
+      xml = read_fixture('tax_codes')
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :tax_code)
       expect(qr.show.last).to match /New York City/
     end
 
     it "description should display using the doc_number for invoice" do
-      xml = File.read(File.join('spec', 'fixtures', 'invoices.xml'))
-      response = Struct.new(:plain_body, :code).new(xml, 200)
-      allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
-      qr = Quickbooks::Base.new(account, :invoice)
+      xml = read_fixture('invoices')
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :invoice)
       expect(qr.show.last).to match /1234/
     end
 
     it "description should display using the total for payment" do
-      xml = File.read(File.join('spec', 'fixtures', 'payments.xml'))
-      response = Struct.new(:plain_body, :code).new(xml, 200)
-      allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
-      qr = Quickbooks::Base.new(account, :payment)
+      xml = read_fixture('payments')
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :payment)
       expect(qr.show.last).to match /100\.0/
     end
 
     it "description should display 'nil' as no description fits" do
-      xml = File.read(File.join('spec', 'fixtures', 'dummy.xml'))
+      pending 'Need to find a transaction or name entity that does not match txn_date'
+      xml = read_fixture('dummy')
       xml.gsub!('Dummy', 'SalesReceipt')
-      response = Struct.new(:plain_body, :code).new(xml, 200)
-      allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
-      qr = Quickbooks::Base.new(account, :sales_receipt)
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :sales_receipt)
       expect(qr.show.last).to match /nil/
     end
 
@@ -106,10 +102,29 @@ describe Quickbooks::Base do
 
   describe ".create_service_for" do
     it "creates a access_token service" do
-      account = double(settings: double( qb_token: 'tttttttttt', qb_secret: 'ssssssss', qb_company_id: '1234567'))
-      qb = Quickbooks::Base.new(account)
+      qb = Quickbooks::Base.new(full_account)
       service = qb.create_service_for :access_token
       expect(service.class.name).to match /Service::AccessToken/
     end
+  end
+
+  describe ".get" do
+
+    it 'grabs a object by id' do
+      xml = read_fixture('invoice') 
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :invoice)
+      result = qr.id(28)
+      expect(result.id).to eq 156
+    end
+  end
+
+  def read_fixture(filename)
+    File.read(File.join('spec', 'fixtures', "#{filename}.xml"))
+  end
+
+  def stub_response(xml)
+    response = Struct.new(:plain_body, :code).new(xml, 200)
+    allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
   end
 end
