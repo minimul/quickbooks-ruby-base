@@ -18,7 +18,7 @@ module Quickbooks
         sql_builder(where, options)
       end
 
-      def find_by_name(display_name, options = {})
+      def display_name(display_name, options = {})
         sql = display_name_sql(display_name, options)
         @service.query(sql)
       end
