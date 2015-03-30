@@ -1,9 +1,11 @@
 require 'quickbooks-ruby'
 require_relative 'base/configuration'
+require_relative 'base/finders'
 
 module Quickbooks
   class Base
-    attr_reader :service
+    attr_reader :service, :entity
+    include Finders
     extend Configuration
 
     def initialize(account, type = nil)
@@ -11,18 +13,18 @@ module Quickbooks
       create_service_for(type) if type
     end
 
-    def generate_quickbooks_ruby_namespace(which, type = 'Model')
-      which = which.to_s.camelcase if which.is_a?(Symbol)
-      "Quickbooks::#{type}::#{which}"
+    def generate_quickbooks_ruby_namespace(entity, type = 'Model')
+      @entity = entity.is_a?(Symbol) ? entity.to_s.camelcase : entity
+      "Quickbooks::#{type}::#{@entity}"
     end
 
-    def quickbooks_ruby_model(which, *args)
-      generate_quickbooks_ruby_namespace(which, 'Model').constantize.new(*args)
+    def quickbooks_ruby_model(entity, *args)
+      generate_quickbooks_ruby_namespace(entity, 'Model').constantize.new(*args)
     end
     alias_method :qr_model, :quickbooks_ruby_model
 
-    def quickbooks_ruby_service(which)
-      generate_quickbooks_ruby_namespace(which, 'Service').constantize.new
+    def quickbooks_ruby_service(entity)
+      generate_quickbooks_ruby_namespace(entity, 'Service').constantize.new
     end
     alias_method :qr_service, :quickbooks_ruby_service
 
