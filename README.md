@@ -73,18 +73,18 @@ base = Quickbooks::Base.new(account, :payment_method)
 ```
 
 ### id()
-Convience method to fetch an entity by its reference id
+Convenience method to fetch an entity by its reference id
 ```
 base = Quickbooks::Base.new(account, :customer)
 >> base.id(1)
 ```
   
-### find_by_name()
-Convience method to search for a name entity by DisplayName.
+### display_name()
+Convenience method to search for a name entity by DisplayName.
 Note: Leverages proper escaping via the [Quickbooks::Util::QueryBuilder](https://github.com/ruckus/quickbooks-ruby/blob/master/lib/quickbooks/util/query_builder.rb) module.
 ```
 base = Quickbooks::Base.new(account, :customer)
->> base.find_by_name('Chuck Russell')
+>> base.display_name('Chuck Russell')
 # Generates a query based on the following SQL
 # "Select Id, DisplayName From Customer WHERE DisplayName = 'Chuck Russell' LIMIT 1"
 ```
