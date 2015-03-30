@@ -29,7 +29,7 @@ describe Quickbooks::Base do
 
   describe ".show" do
 
-    it "description should display using the dispay_name for vendor" do
+    it "description should display using the display_name for vendor" do
       xml = read_fixture('vendors')
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account, :vendor)
@@ -108,14 +108,26 @@ describe Quickbooks::Base do
     end
   end
 
-  describe ".get" do
-
+  describe ".id" do
     it 'grabs a object by id' do
       xml = read_fixture('invoice') 
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account, :invoice)
       result = qr.id(28)
       expect(result.id).to eq 156
+    end
+  end
+
+  describe ".display_name_sql" do
+    it 'for basic usage' do
+      qr = Quickbooks::Base.new(full_account, :customer)
+      expect(qr.display_name_sql('Chuck Russell')).to eq "Select Id, DisplayName From Customer WHERE DisplayName = 'Chuck Russell' LIMIT 1"
+    end
+
+    it 'for custom usage' do
+      qr = Quickbooks::Base.new(full_account, :customer)
+      sql = qr.display_name_sql('Chuck Russell', entity: 'Vendor', select: '*', limit: 5)
+      expect(sql).to eq "Select * From Vendor WHERE DisplayName = 'Chuck Russell' LIMIT 5"
     end
   end
 
