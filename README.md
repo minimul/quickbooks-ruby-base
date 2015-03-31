@@ -59,15 +59,14 @@ Returns `quickbooks-ruby` service.
 Returns an array of the QuickBooks' IDs and a "smart" description. Smart, meaning that different services have different identifiers. For a customer, employee, and vendor the `DESC` is `display_name`. For invoice, it is `doc_number`. For item, tax_code, and payment_method it is the `name`. 
 ```
 base = Quickbooks::Base.new(account, :invoice)
->> base.service.create(qb_invoice)
 # Returns an array of payment_methods from QBO account
 base = Quickbooks::Base.new(account, :payment_method)
 >> base.show
 # Returns an array of payment_methods from QBO account
->> b.show
+>> base.show
 => ["QBID: 5 DESC: American Express", "QBID: 1 DESC: Cash", "QBID: 2 DESC: Check", "QBID: 6 DESC: Diners Club", "QBID: 7 DESC: Discover", "QBID: 4 DESC: MasterCard", "QBID: 3 DESC: Visa"]
 # With options
->> b.show page:1, per_page: 3
+>> base.show page:1, per_page: 3
 => ["QBID: 5 DESC: American Express", "QBID: 1 DESC: Cash", "QBID: 2 DESC: Check"]
 
 ```
