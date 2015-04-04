@@ -1,6 +1,11 @@
 module Quickbooks
   class Base
     module Finders
+
+      def find_by_id(id)
+        @service.fetch_by_id(id)
+      end
+
       def qbuilder
         Quickbooks::Util::QueryBuilder.new
       end
@@ -18,7 +23,7 @@ module Quickbooks
         sql_builder(where, options)
       end
 
-      def display_name(display_name, options = {})
+      def find_by_display_name(display_name, options = {})
         sql = display_name_sql(display_name, options)
         @service.query(sql)
       end

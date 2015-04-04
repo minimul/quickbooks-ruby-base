@@ -108,12 +108,12 @@ describe Quickbooks::Base do
     end
   end
 
-  describe ".id" do
+  describe ".find_by_id" do
     it 'grabs a object by id' do
       xml = read_fixture('invoice') 
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account, :invoice)
-      result = qr.id(28)
+      result = qr.find_by_id(28)
       expect(result.id).to eq 156
     end
   end

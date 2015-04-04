@@ -39,10 +39,6 @@ module Quickbooks
       end
     end
 
-    def id(id)
-      @service.fetch_by_id(id)
-    end
-
     def description(e)
       desc = (method = describing_method) =~ /(total)/ ? e.send(method).to_f : e.send(method)
     rescue => e
