@@ -4,7 +4,7 @@ require_relative 'base/finders'
 
 module Quickbooks
   class Base
-    attr_reader :service, :entity
+    attr_reader :service
     include Finders
     extend Configuration
 
@@ -13,18 +13,18 @@ module Quickbooks
       create_service_for(type) if type
     end
 
-    def generate_quickbooks_ruby_namespace(entity, type = 'Model')
-      @entity = entity.is_a?(Symbol) ? entity.to_s.camelcase : entity
-      "Quickbooks::#{type}::#{@entity}"
+    def generate_quickbooks_ruby_namespace(type, variety = 'Model')
+      type = type.is_a?(Symbol) ? type.to_s.camelcase : type
+      "Quickbooks::#{variety}::#{type}"
     end
 
-    def quickbooks_ruby_model(entity, *args)
-      generate_quickbooks_ruby_namespace(entity, 'Model').constantize.new(*args)
+    def quickbooks_ruby_model(type, *args)
+      generate_quickbooks_ruby_namespace(type, 'Model').constantize.new(*args)
     end
     alias_method :qr_model, :quickbooks_ruby_model
 
-    def quickbooks_ruby_service(entity)
-      generate_quickbooks_ruby_namespace(entity, 'Service').constantize.new
+    def quickbooks_ruby_service(type)
+      generate_quickbooks_ruby_namespace(type, 'Service').constantize.new
     end
     alias_method :qr_service, :quickbooks_ruby_service
 
@@ -45,8 +45,12 @@ module Quickbooks
       'nil'
     end
 
+    def entity
+      @service.class.name.split('::').last
+    end
+
     def describing_method
-      case @service.class.name
+      case entity
       when /(Item|TaxCode|PaymentMethod|Account)/
         'name'
       when /(Invoice|CreditMemo)/

@@ -11,7 +11,7 @@ module Quickbooks
       end
 
       def sql_builder(where, options = {})
-        options[:entity] ||= @entity
+        options[:entity] ||= entity
         options[:select] ||= '*'
         "SELECT #{options[:select]} FROM #{options[:entity]} WHERE #{where}"
       end
