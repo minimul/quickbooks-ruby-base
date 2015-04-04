@@ -121,13 +121,13 @@ describe Quickbooks::Base do
   describe ".display_name_sql" do
     it 'for basic usage' do
       qr = Quickbooks::Base.new(full_account, :customer)
-      expect(qr.display_name_sql('Chuck Russell')).to eq "Select Id, DisplayName From Customer WHERE DisplayName = 'Chuck Russell' LIMIT 1"
+      expect(qr.display_name_sql('Chuck Russell')).to eq "SELECT Id, DisplayName FROM Customer WHERE DisplayName = 'Chuck Russell'"
     end
 
     it 'for custom usage' do
       qr = Quickbooks::Base.new(full_account, :customer)
-      sql = qr.display_name_sql('Chuck Russell', entity: 'Vendor', select: '*', limit: 5)
-      expect(sql).to eq "Select * From Vendor WHERE DisplayName = 'Chuck Russell' LIMIT 5"
+      sql = qr.display_name_sql('Chuck Russell', entity: 'Vendor', select: '*')
+      expect(sql).to eq "SELECT * FROM Vendor WHERE DisplayName = 'Chuck Russell'"
     end
   end
 

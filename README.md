@@ -85,7 +85,7 @@ Note: Leverages proper escaping via the [Quickbooks::Util::QueryBuilder](https:/
 base = Quickbooks::Base.new(account, :customer)
 >> base.find_by_display_name('Chuck Russell')
 # Generates a query based on the following SQL
-# "Select Id, DisplayName From Customer WHERE DisplayName = 'Chuck Russell' LIMIT 1"
+# "SELECT Id, DisplayName FROM Customer WHERE DisplayName = 'Chuck Russell'"
 ```
 
 ## Configuration

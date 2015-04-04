@@ -13,8 +13,7 @@ module Quickbooks
       def sql_builder(where, options = {})
         options[:entity] ||= @entity
         options[:select] ||= '*'
-        options[:limit] ||= 1
-        "Select #{options[:select]} From #{options[:entity]} WHERE #{where} LIMIT #{options[:limit]}"
+        "SELECT #{options[:select]} FROM #{options[:entity]} WHERE #{where}"
       end
 
       def display_name_sql(display_name, options = {})
