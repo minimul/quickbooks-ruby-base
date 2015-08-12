@@ -68,6 +68,9 @@ base = Quickbooks::Base.new(account, :payment_method)
 # With options
 >> base.show page:1, per_page: 3
 => ["QBID: 5 DESC: American Express", "QBID: 1 DESC: Cash", "QBID: 2 DESC: Check"]
+# Show another entity
+>> base.show(entity: :vendor)
+=> ["QBID: 5 DESC: Hampton's Car Parts", "QBID: 6 DESC: Good Eats", "QBID: 7 DESC: The Flower Shoppe"]
 
 ```
 
@@ -76,6 +79,8 @@ Convenience method to fetch an entity by its reference id
 ```
 base = Quickbooks::Base.new(account, :customer)
 >> base.find_by_id(1)
+# Second argument to find Employee with id = 55
+>> base.find_by_id(55, :employee)
 ```
   
 ### find_by_display_name()
@@ -86,6 +91,13 @@ base = Quickbooks::Base.new(account, :customer)
 >> base.find_by_display_name('Chuck Russell')
 # Generates a query based on the following SQL
 # "SELECT Id, DisplayName FROM Customer WHERE DisplayName = 'Chuck Russell'"
+```
+#### with options
+```
+base = Quickbooks::Base.new(account)
+>> base.find_by_display_name("Jonnie O'Meara", entity: :vendor, select: '*')
+# Generates a query based on the following SQL
+# "SELECT * FROM Vendor WHERE DisplayName = 'Jonnie O\\'Meara'"
 ```
 
 ## Configuration

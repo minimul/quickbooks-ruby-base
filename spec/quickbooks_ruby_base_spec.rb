@@ -57,6 +57,14 @@ describe Quickbooks::Base do
       expect(qr.show.last).to match /100\.0/
     end
 
+    it "display another entity using the entity options" do
+      xml = read_fixture('payments')
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :invoice)
+      expect(qr.show).to be_empty
+      expect(qr.show(entity: :payment).last).to match /100\.0/
+    end
+
     it "description should display 'nil' as no description fits" do
       pending 'Need to find a transaction or name entity that does not match txn_date'
       xml = read_fixture('dummy')
@@ -103,8 +111,8 @@ describe Quickbooks::Base do
   describe ".create_service_for" do
     it "creates a access_token service" do
       qb = Quickbooks::Base.new(full_account)
-      service = qb.create_service_for :access_token
-      expect(service.class.name).to match /Service::AccessToken/
+      qb.create_service_for :access_token
+      expect(qb.service.class.name).to match /Service::AccessToken/
     end
   end
 
@@ -116,6 +124,14 @@ describe Quickbooks::Base do
       result = qr.find_by_id(28)
       expect(result.id).to eq 156
     end
+
+    it 'grabs object from different entity' do
+      xml = read_fixture('item_5') 
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account)
+      result = qr.find_by_id(5, :item)
+      expect(result.id).to eq 5
+    end
   end
 
   describe ".display_name_sql" do
@@ -125,9 +141,27 @@ describe Quickbooks::Base do
     end
 
     it 'for custom usage' do
-      qr = Quickbooks::Base.new(full_account, :customer)
-      sql = qr.display_name_sql('Chuck Russell', entity: 'Vendor', select: '*')
-      expect(sql).to eq "SELECT * FROM Vendor WHERE DisplayName = 'Chuck Russell'"
+      qr = Quickbooks::Base.new(full_account)
+      sql = qr.display_name_sql("Jonnie O'Meara", entity: :vendor, select: '*')
+      expect(sql).to eq "SELECT * FROM Vendor WHERE DisplayName = 'Jonnie O\\'Meara'"
+    end
+  end
+
+  describe ".find_by_display_name" do
+    it 'use entity on initialization' do
+      xml = read_fixture('employee_55') 
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account, :employee)
+      result = qr.find_by_display_name("Emily Platt")
+      expect(result.first.id).to eq 55
+    end
+
+    it 'passing in the entity' do
+      xml = read_fixture('customer_2') 
+      stub_response(xml)
+      qr = Quickbooks::Base.new(full_account)
+      result = qr.find_by_display_name("Bill's Windsurf Shop", entity: :customer)
+      expect(result.first.id).to eq 2
     end
   end
 
