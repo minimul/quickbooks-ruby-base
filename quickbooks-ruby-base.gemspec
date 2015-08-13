@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'quickbooks-ruby-base'
-  spec.version       = '1.5.0'
+  spec.version       = '1.6.0'
   spec.authors       = ["Christian"]
   spec.email         = ["christian@minimul.com"]
   spec.summary       = %q{Base class to provide common methods for the quickbooks-ruby gem}

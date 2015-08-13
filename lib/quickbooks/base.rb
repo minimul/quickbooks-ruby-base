@@ -13,8 +13,12 @@ module Quickbooks
       create_service_for(type) if type
     end
 
+    def qbo_case(type)
+      type.is_a?(Symbol) ? type.to_s.camelcase : type
+    end
+
     def generate_quickbooks_ruby_namespace(type, variety = 'Model')
-      type = type.is_a?(Symbol) ? type.to_s.camelcase : type
+      type = qbo_case(type)
       "Quickbooks::#{variety}::#{type}"
     end
 
@@ -34,23 +38,25 @@ module Quickbooks
 
     def show(options = {})
       options = { per_page: 20, page: 1 }.merge(options)
-      @service.query(nil, options).entries.collect do |e|
+      service = determine_service(options[:entity])
+      service.query(nil, options).entries.collect do |e|
         "QBID: #{e.id} DESC: #{description(e)}"
       end
     end
 
     def description(e)
-      desc = (method = describing_method) =~ /(total)/ ? e.send(method).to_f : e.send(method)
+      desc = (method = describing_method(e)) =~ /(total)/ ? e.send(method).to_f : e.send(method)
     rescue => e
       'nil'
     end
 
-    def entity
-      @service.class.name.split('::').last
+    def entity(obj = nil)
+      obj ||= @service
+      obj.class.name.split('::').last
     end
 
-    def describing_method
-      case entity
+    def describing_method(e)
+      case entity(e)
       when /(Item|TaxCode|PaymentMethod|Account)/
         'name'
       when /(Invoice|CreditMemo)/
@@ -82,14 +88,22 @@ module Quickbooks
       send_chain(arr)
     end
 
+    def service_for(type)
+      service = quickbooks_ruby_service(type)
+      service.access_token = oauth_client
+      service.company_id = company_id
+      service
+    end
+
     def create_service_for(type)
-      @service = quickbooks_ruby_service(type)
-      @service.access_token = oauth_client
-      @service.company_id = company_id
-      @service
+      @service = service_for(type)
     end
 
     private
+
+    def determine_service(entity)
+      entity ? service_for(entity) : @service
+    end
 
     def send_chain(arr)
       arr.inject(@account) {|o, a| o.send(a) }

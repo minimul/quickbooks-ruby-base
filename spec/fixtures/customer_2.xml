@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2015-08-12T12:29:53.867-07:00">
+  <Customer domain="QBO" sparse="false">
+    <Id>2</Id>
+    <SyncToken>0</SyncToken>
+    <MetaData>
+      <CreateTime>2015-06-24T16:49:28-07:00</CreateTime>
+      <LastUpdatedTime>2015-07-01T12:56:01-07:00</LastUpdatedTime>
+    </MetaData>
+    <GivenName>Bill</GivenName>
+    <FamilyName>Lucchini</FamilyName>
+    <FullyQualifiedName>Bill's Windsurf Shop</FullyQualifiedName>
+    <CompanyName>Bill's Windsurf Shop</CompanyName>
+    <DisplayName>Bill's Windsurf Shop</DisplayName>
+    <PrintOnCheckName>Bill's Windsurf Shop</PrintOnCheckName>
+    <Active>true</Active>
+    <PrimaryPhone>
+      <FreeFormNumber>(415) 444-6538</FreeFormNumber>
+    </PrimaryPhone>
+    <PrimaryEmailAddr>
+      <Address>Surf@Intuit.com</Address>
+    </PrimaryEmailAddr>
+    <Taxable>false</Taxable>
+    <BillAddr>
+      <Id>3</Id>
+      <Line1>12 Ocean Dr.</Line1>
+      <City>Half Moon Bay</City>
+      <CountrySubDivisionCode>CA</CountrySubDivisionCode>
+      <PostalCode>94213</PostalCode>
+      <Lat>37.4307072</Lat>
+      <Long>-122.4295234</Long>
+    </BillAddr>
+    <Job>false</Job>
+    <BillWithParent>false</BillWithParent>
+    <Balance>85.00</Balance>
+    <BalanceWithJobs>85.00</BalanceWithJobs>
+    <PreferredDeliveryMethod>Print</PreferredDeliveryMethod>
+  </Customer>
+</IntuitResponse>
