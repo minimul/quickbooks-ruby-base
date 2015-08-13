@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2015-08-12T08:05:03.899-07:00">
+<Item domain="QBO" sparse="false">
+  <Id>5</Id>
+  <SyncToken>2</SyncToken>
+  <MetaData>
+    <CreateTime>2015-06-29T10:42:19-07:00</CreateTime>
+    <LastUpdatedTime>2015-07-02T13:16:17-07:00</LastUpdatedTime>
+  </MetaData>
+  <Name>Rock Fountain</Name>
+  <Description>Rock Fountain</Description>
+  <Active>true</Active>
+  <FullyQualifiedName>Rock Fountain</FullyQualifiedName>
+  <Taxable>true</Taxable>
+  <UnitPrice>275</UnitPrice>
+  <Type>Inventory</Type>
+  <IncomeAccountRef name="Sales of Product Income">79</IncomeAccountRef>
+  <PurchaseDesc>Rock Fountain</PurchaseDesc>
+  <PurchaseCost>125</PurchaseCost>
+  <ExpenseAccountRef name="Cost of Goods Sold">80</ExpenseAccountRef>
+  <AssetAccountRef name="Inventory Asset">81</AssetAccountRef>
+  <TrackQtyOnHand>true</TrackQtyOnHand>
+  <QtyOnHand>2</QtyOnHand>
+  <InvStartDate>2015-07-02</InvStartDate>
+</Item>
+</IntuitResponse>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<IntuitResponse xmlns="http://schema.intuit.com/finance/v3" time="2015-08-12T12:45:49.202-07:00">
+  <Employee domain="QBO" sparse="false">
+    <Id>55</Id>
+    <SyncToken>0</SyncToken>
+    <MetaData>
+      <CreateTime>2015-06-30T11:21:48-07:00</CreateTime>
+      <LastUpdatedTime>2015-06-30T11:21:48-07:00</LastUpdatedTime>
+    </MetaData>
+    <GivenName>Emily</GivenName>
+    <FamilyName>Platt</FamilyName>
+    <DisplayName>Emily Platt</DisplayName>
+    <PrintOnCheckName>Emily Platt</PrintOnCheckName>
+    <Active>true</Active>
+    <BillableTime>false</BillableTime>
+  </Employee>
+</IntuitResponse>
