@@ -13,7 +13,7 @@ module Quickbooks
         @oauth_consumer ||= $qb_oauth_consumer
       end
 
-      %w(token secret company_id).each do |type|
+      %w(token refresh_token company_id).each do |type|
         class_eval <<-eos
           def persistent_#{type}=(location)
             @persistent_#{type} = location

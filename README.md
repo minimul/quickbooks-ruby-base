@@ -104,10 +104,10 @@ base = Quickbooks::Base.new(account)
 
 As the first argument, the `Quickbooks::Base` class expects a persistent object that holds OAuth connection information.
 
-For example, if an account's OAuth information is stored like this:
+For example, if an account's OAuth2 information is stored like this:
 ```
 account.qb_token
-account.qb_secret
+account.qb_refresh_token
 account.qb_company_id
 ```
 
@@ -127,7 +127,7 @@ $qb_oauth_consumer = OAuth::Consumer.new(QB_KEY, QB_SECRET, {
 
 Quickbooks::Base.configure do |c|
   c.persistent_token = 'qb_token'
-  c.persistent_secret = 'qb_secret'
+  c.persistent_refresh_token = 'qb_refresh_token'
   c.persistent_company_id = 'qb_company_id'
 end
 
