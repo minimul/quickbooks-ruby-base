@@ -121,16 +121,16 @@ describe Quickbooks::Base do
       xml = read_fixture('invoice') 
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account, :invoice)
-      result = qr.find_by_id(28)
-      expect(result.id).to eq 156
+      result = qr.find_by_id('28')
+      expect(result.id).to eq '156'
     end
 
     it 'grabs object from different entity' do
       xml = read_fixture('item_5') 
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account)
-      result = qr.find_by_id(5, :item)
-      expect(result.id).to eq 5
+      result = qr.find_by_id('5', :item)
+      expect(result.id).to eq '5'
     end
   end
 
@@ -153,7 +153,7 @@ describe Quickbooks::Base do
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account, :employee)
       result = qr.find_by_display_name("Emily Platt")
-      expect(result.first.id).to eq 55
+      expect(result.first.id).to eq '55'
     end
 
     it 'passing in the entity' do
@@ -161,7 +161,7 @@ describe Quickbooks::Base do
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account)
       result = qr.find_by_display_name("Bill's Windsurf Shop", entity: :customer)
-      expect(result.first.id).to eq 2
+      expect(result.first.id).to eq '2'
     end
   end
 

@@ -2,5 +2,7 @@ require 'quickbooks/base'
 require 'quickbooks-ruby'
 
 RSpec.configure do |c|
-  c.color_enabled = true
+  #config.failure_color = :magenta
+  #config.tty = true
+  c.color = true
 end
