@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Quickbooks::Base do
   let(:account) { double }
-  let(:full_account) { account = double(settings: double( qb_token: 'tttttttttt', qb_secret: 'ssssssss', qb_company_id: '1234567')) }
+  let(:full_account) { account = double(settings: double( qb_token: 'tttttttttt', qb_refresh_token: 'ssssssss', qb_company_id: '1234567')) }
   let(:qr_base) { Quickbooks::Base.new(account) }
 
   describe ".quickbooks_ruby_namespace" do
@@ -78,7 +78,7 @@ describe Quickbooks::Base do
 
   describe ".retrieve" do
     after do
-     Quickbooks::Base.configure { |c| c.persistent_token = nil; c.persistent_secret = nil; c.persistent_company_id = nil }
+     Quickbooks::Base.configure { |c| c.persistent_token = nil; c.persistent_refresh_token = nil; c.persistent_company_id = nil }
     end
 
     it "should set the persistence token location" do
@@ -121,16 +121,16 @@ describe Quickbooks::Base do
       xml = read_fixture('invoice') 
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account, :invoice)
-      result = qr.find_by_id(28)
-      expect(result.id).to eq 156
+      result = qr.find_by_id('28')
+      expect(result.id).to eq '156'
     end
 
     it 'grabs object from different entity' do
       xml = read_fixture('item_5') 
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account)
-      result = qr.find_by_id(5, :item)
-      expect(result.id).to eq 5
+      result = qr.find_by_id('5', :item)
+      expect(result.id).to eq '5'
     end
   end
 
@@ -153,7 +153,7 @@ describe Quickbooks::Base do
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account, :employee)
       result = qr.find_by_display_name("Emily Platt")
-      expect(result.first.id).to eq 55
+      expect(result.first.id).to eq '55'
     end
 
     it 'passing in the entity' do
@@ -161,7 +161,7 @@ describe Quickbooks::Base do
       stub_response(xml)
       qr = Quickbooks::Base.new(full_account)
       result = qr.find_by_display_name("Bill's Windsurf Shop", entity: :customer)
-      expect(result.first.id).to eq 2
+      expect(result.first.id).to eq '2'
     end
   end
 
@@ -170,7 +170,7 @@ describe Quickbooks::Base do
   end
 
   def stub_response(xml)
-    response = Struct.new(:plain_body, :code).new(xml, 200)
-    allow_any_instance_of(OAuth::AccessToken).to receive(:get).and_return(response)
+    response = Struct.new(:body, :status).new(xml, 200)
+    allow_any_instance_of(OAuth2::AccessToken).to receive(:get).and_return(response)
   end
 end

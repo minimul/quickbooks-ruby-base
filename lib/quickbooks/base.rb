@@ -33,7 +33,7 @@ module Quickbooks
     alias_method :qr_service, :quickbooks_ruby_service
 
     def oauth_client
-      @oauth_client ||= OAuth::AccessToken.new(Quickbooks::Base.oauth_consumer, token, secret)
+      @oauth_client ||= OAuth2::AccessToken.new(Quickbooks::Base.oauth_consumer, token, refresh_token: refresh_token)
     end
 
     def show(options = {})
@@ -74,8 +74,8 @@ module Quickbooks
       retrieve(:token)
     end
 
-    def secret
-      retrieve(:secret)
+    def refresh_token
+      retrieve(:refresh_token)
     end
 
     def company_id
